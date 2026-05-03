@@ -1,0 +1,549 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', 'Fira Code', 'Consolas', monospace;
+    background: linear-gradient(to right, #ad60d1, #90EE90);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* ============ HEADER STYLES ============ */
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(to right, #ad60d1, #90EE90);
+    border-bottom: 2px solid #333;
+}
+
+header h1 {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: -1px;
+}
+
+header p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* ============ TWO-COLUMN LAYOUT ============ */
+.dashboard-container {
+    display: flex;
+    gap: 0;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: calc(100vh - 120px);
+}
+
+/* Left Column - Search History */
+.left-column {
+    flex: 0.8;
+    min-width: 280px;
+    background: #f8f9fa;
+    border-right: 2px solid #333;
+}
+
+/* Right Column - Weather Content */
+.right-column {
+    flex: 2.2;
+    background: #ffffff;
+}
+
+/* ============ FORM CONTAINER ============ */
+.weatherForm {
+    background: linear-gradient(to right, #ad60d1, #90EE90);
+
+    padding: 25px;
+    border-bottom: 2px solid #333;
+    display: flex;
+    gap: 15px;
+}
+
+#cityInput {
+    flex: 3;
+    padding: 14px 18px;
+    border: 2px solid #333;
+    outline: none;
+    font-size: 15px;
+    background: white;
+    font-family: 'Courier New', monospace;
+}
+
+#cityInput:focus {
+    border-color: #2c3e50;
+    background: #f0f0f0;
+}
+
+#mysubmit {
+    flex: 1;
+    padding: 14px 20px;
+    background: #2c3e50;
+    color: white;
+    border: 2px solid #333;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Courier New', monospace;
+}
+
+#mysubmit:hover {
+    background: #1a252f;
+}
+
+/* ============ LEFT COLUMN - HISTORY SECTION ============ */
+.history {
+    padding: 25px;
+    height: 100%;
+}
+
+.history h2 {
+    color: #2c3e50;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+    font-family: 'Courier New', monospace;
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#historyList li {
+    background: #ffffff;
+    padding: 10px 15px;
+    border: 2px solid #333;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+#historyList li:hover {
+    background: #2c3e50;
+    color: white;
+    transform: translateX(5px);
+}
+
+.history-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#clearHistory, #past-city {
+    padding: 12px 15px;
+    border: 2px solid #333;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+}
+
+#clearHistory {
+    background: #dc3545;
+    color: white;
+}
+
+#clearHistory:hover {
+    background: #c82333;
+}
+
+#past-city {
+    background: #28a745;
+    color: white;
+}
+
+#past-city:hover {
+    background: #218838;
+}
+
+/* ============ CURRENT WEATHER CARD ============ */
+.main-card {
+    background: white;
+    margin: 25px;
+    border: 2px solid #333;
+    overflow: hidden;
+}
+
+.weather-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background: #f8f9fa;
+    border-bottom: 2px solid #333;
+}
+
+.city-section {
+    text-align: left;
+}
+
+.cityDisplay {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.weatherDesc {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #666;
+    font-family: 'Courier New', monospace;
+}
+
+.temp-section {
+    text-align: center;
+}
+
+.weatheremoji {
+    font-size: 64px;
+    margin-bottom: 5px;
+}
+
+.tempDisplay {
+    font-size: 52px;
+    font-weight: bold;
+    color: #2c3e50;
+    font-family: 'Courier New', monospace;
+}
+
+.weather-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: white;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+.detail-card {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    padding: 15px 10px;
+    background: #f8f9fa;
+    margin: 0;
+    border-right: 1px solid #ddd;
+}
+
+.detail-card:last-child {
+    border-right: none;
+}
+
+.detail-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.detail-label {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 5px;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    font-family: 'Courier New', monospace;
+}
+
+.detail-unit {
+    font-size: 11px;
+    color: #999;
+}
+
+/* ============ HOURLY SLIDER SECTION ============ */
+.hourly-slider-section {
+    background: #f8f9fa;
+    margin: 25px;
+    padding: 20px;
+    border: 2px solid #333;
+}
+
+.hourly-slider-section h2 {
+    color: #2c3e50;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.time-slider-container {
+    padding: 10px 0;
+}
+
+#timeSlider {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    background: #333;
+    border-radius: 0;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+#timeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #2c3e50;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #666;
+    flex-wrap: wrap;
+}
+
+.slider-labels span {
+    cursor: pointer;
+    padding: 5px;
+    font-family: 'Courier New', monospace;
+}
+
+.slider-hint {
+    font-size: 11px;
+    color: #999;
+    margin-top: 12px;
+    font-family: 'Courier New', monospace;
+}
+
+/* ============ 5-DAY SLIDER ============ */
+.five-day-section {
+    margin: 25px;
+}
+
+.five-day-section h2 {
+    color: #2c3e50;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.five-day-slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.five-day-slider {
+    overflow-x: hidden;
+    width: 90%;
+}
+
+.five-day-track {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.4s ease-in-out;
+    padding: 10px 0;
+}
+
+.slider-btn {
+    background: #2c3e50;
+    color: white;
+    border: 2px solid #333;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s;
+    font-family: 'Courier New', monospace;
+}
+
+.slider-btn:hover {
+    background: #1a252f;
+}
+
+/* 5-Day Forecast Card */
+.five-day-card-slide {
+    min-width: 180px;
+    background: #f8f9fa;
+    padding: 15px;
+    border: 2px solid #333;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.five-day-card-slide:hover {
+    transform: translateY(-3px);
+    background: #f0f0f0;
+}
+
+.five-day-date {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-family: 'Courier New', monospace;
+}
+
+.five-day-emoji {
+    font-size: 42px;
+    margin: 8px 0;
+}
+
+.five-day-temp {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2c3e50;
+    font-family: 'Courier New', monospace;
+}
+
+.five-day-desc {
+    text-transform: capitalize;
+    font-size: 14px;
+    color: #666;
+    margin: 6px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.five-day-humidity, .five-day-wind {
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Hourly navigation INSIDE each forecast card */
+.hour-nav-inside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+    gap: 6px;
+    background: white;
+    padding: 6px;
+    border: 1px solid #ddd;
+}
+
+.hour-prev-card, .hour-next-card {
+    background: #2c3e50;
+    color: white;
+    border: 1px solid #333;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.2s;
+    font-family: 'Courier New', monospace;
+}
+
+.hour-prev-card:hover, .hour-next-card:hover {
+    background: #1a252f;
+}
+
+.current-hour-time {
+    font-weight: bold;
+    font-size: 11px;
+    background: #f0f0f0;
+    padding: 4px 10px;
+    color: #2c3e50;
+    font-family: 'Courier New', monospace;
+}
+
+.five-day-hourly-details {
+    margin-top: 5px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, #ad60d1, #90EE90);
+    border-top: 2px solid #333;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: #666;
+}
+
+.errorDisplay {
+    color: #dc3545;
+    font-size: 14px;
+    padding: 20px;
+    background: #f8f9fa;
+    border: 2px solid #333;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    
+    .left-column {
+        flex: auto;
+        min-width: auto;
+        border-right: none;
+        border-bottom: 2px solid #333;
+    }
+    
+    .right-column {
+        flex: auto;
+    }
+    
+    .weatherForm {
+        flex-direction: column;
+    }
+    
+    .weather-bottom {
+        flex-direction: column;
+    }
+    
+    .detail-card {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .detail-card:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .weather-top {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .city-section {
+        text-align: center;
+    }
+    
+    .five-day-card-slide {
+        min-width: 140px;
+    }
+    
+    header h1 {
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌤️ Weather Dashboard</h1>
+        <p>Your complete weather guide for any city worldwide</p>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- LEFT COLUMN - Search History -->
+        <div class="left-column">
+            <div class="history">
+                <h2>📜 SEARCH HISTORY</h2>
+                <ul id="historyList"></ul>
+                <div class="history-buttons">
+                    <button type="button" id="clearHistory">🗑️ CLEAR HISTORY</button>
+                    <button type="button" id="past-city">📌 PAST CITY</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN - Weather Content -->
+        <div class="right-column">
+            <form class="weatherForm">
+                <input type="text" id="cityInput" placeholder="ENTER CITY NAME">
+                <button type="submit" id="mysubmit">🔍 SHOW WEATHER</button>
+            </form>
+
+            <div class="main-card" style="display:none"></div>
+
+            <div class="hourly-slider-section" style="display:none">
+                <h2>⏰ TODAY'S HOURLY FORECAST</h2>
+                <div class="time-slider-container">
+                    <input type="range" id="timeSlider" min="0" max="0" step="1" value="0">
+                    <div class="slider-labels" id="sliderLabels"></div>
+                </div>
+                <p class="slider-hint" id="sliderHint"></p>
+            </div>
+
+            <div class="five-day-section">
+                <h2>📅 5-DAY FORECAST</h2>
+                <div class="five-day-slider-container">
+                    <button class="slider-btn prev-five">◀</button>
+                    <div class="five-day-slider">
+                        <div class="five-day-track" id="fiveDayTrack"></div>
+                    </div>
+                    <button class="slider-btn next-five">▶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 WEATHER DASHBOARD | POWERED BY OPENWEATHERMAP API</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
